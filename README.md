@@ -1,2 +1,2 @@
 # langchain
-Learning Generative AI
+Learning AI
