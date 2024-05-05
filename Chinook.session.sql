@@ -1,1 +1,2 @@
-select * from Album limit 10;
+select count(*) from Artist ;
+-- SELECT COUNT(*) as artist_count FROM Track;

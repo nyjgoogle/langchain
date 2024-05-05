@@ -6,6 +6,7 @@ from langchain_community.utilities import SQLDatabase
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
+from langchain_community.chat_models import ChatOllama
 import streamlit as st
 
 
@@ -45,7 +46,8 @@ def get_sql_chain(db):
     prompt = ChatPromptTemplate.from_template(template)
 
     # llm = ChatOpenAI(model="gpt-3.5-turbo")
-    llm = ChatGroq(model="Mixtral-8x7b-32768",temperature=0)
+    # llm = ChatGroq(model="llama3",temperature=0) 
+    llm = ChatOllama(model="llama3", temperature=0)
 
 
     def get_schema(_):
@@ -73,7 +75,8 @@ def get_response(user_query:str,db:SQLDatabase,chat_history:list):
     prompt = ChatPromptTemplate.from_template(template)
 
     # llm = ChatOpenAI(model="gpt-3.5-turbo")
-    llm = ChatGroq(model="Mixtral-8x7b-32768",temperature=0)
+    # llm = ChatGroq(model="Mixtral-8x7b-32768",temperature=0)
+    llm = ChatOllama(model="llama3", temperature=0)
 
     chain = (
         RunnablePassthrough.assign(query=sql_chain).assign(
